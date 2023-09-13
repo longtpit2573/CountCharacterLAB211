@@ -41,13 +41,12 @@ public class CountProgramming extends Menu<String>{
     }
 
     public void countWord(){
-        algorithm.countWord(valuesss);
-        algorithm.displayCountWord();
+        algorithm.tachTu(valuesss);
     }
 
     public void countCharacter(){
-        algorithm.CountCharacter(valuesss);
-        algorithm.displayCountCharacter();
+        algorithm.tachKitu(valuesss);
+        
     }
     
 

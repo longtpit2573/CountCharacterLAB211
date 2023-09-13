@@ -2,52 +2,45 @@ package CountCharacter.common;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.StringTokenizer;
 
 public class Algorithm {
 
-    HashMap<String, Integer> wordCountMap = new HashMap<>();
-    HashMap<Character, Integer> charCountMap = new HashMap<>();
+  
 
-    public void countWord(String input){
-        
-        String[] words = input.trim().split("\\s+");
-        for (String word : words) {
-            if (wordCountMap.containsKey(word)) {
-                wordCountMap.put(word, wordCountMap.get(word) + 1);
+
+    public void tachTu(String input) {
+        StringTokenizer stringTokenizer = new StringTokenizer(input, " ");
+        HashMap<String, Integer> demTu = new HashMap<>();
+        while (stringTokenizer.hasMoreTokens()) {
+
+            String tu = stringTokenizer.nextToken();
+            if (!demTu.containsKey(tu)) {
+                demTu.put(tu, 1);
             } else {
-                wordCountMap.put(word, 1);
+                demTu.put(tu, ((int) demTu.get(tu)) + 1);
             }
         }
+         System.out.println(demTu);
     }
 
 
-    public void CountCharacter(String input){
-        
-        for (char ch : input.toCharArray()) {
-            if (charCountMap.containsKey(ch)) {
-                charCountMap.put(ch, charCountMap.get(ch) + 1);
+
+    public void tachKitu(String input) {
+        input = input.replaceAll("\\s+", "");
+        HashMap<Character, Integer> demKitu = new HashMap<>();
+        for (Character kitu : input.toCharArray()) {
+            if (!demKitu.containsKey(kitu)) {
+                demKitu.put(kitu, 1);
             } else {
-                charCountMap.put(ch, 1);
+                demKitu.put(kitu, demKitu.get(kitu) +1);
             }
+            
+            
         }
+        System.out.println(demKitu);
     }
-
-    public void displayCountWord(){
-        System.out.println("so lan xuat hien cua tung tu trong chuoi:");
-        for (Map.Entry<String, Integer> entry : wordCountMap.entrySet()) {
-            System.out.println(entry.getKey() + "=" + entry.getValue());
-        }
-    }
-
-    public void displayCountCharacter() {
-        System.out.println("So lan xuat hien cua tung ky tu trong chuoi:");
-        for (Map.Entry<Character, Integer> entry : charCountMap.entrySet()) {
-            char ch = entry.getKey();
-            int count = entry.getValue();
-            if (ch != ' ') {  // Kiểm tra nếu không phải ký tự khoảng trắng
-                System.out.println(ch + "=" + count);
-            }
-        }
-    }
+    
+    
     
 }
